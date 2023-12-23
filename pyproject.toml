@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "refact"
+dynamic = ["version"]
+description = "Refactoring practice example, ported from example in first chapter of Martin Fowler's Refactoring book."
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = []
+authors = [
+  { name = "Cameron Unterberger", email = "camercu@gatech.edu" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/camercu/refact#readme"
+Issues = "https://github.com/camercu/refact/issues"
+Source = "https://github.com/camercu/refact"
+
+[tool.hatch.version]
+path = "src/refact/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+  "pytest-sugar",
+  "pytest-cov",
+  "pytest-mock",
+  "pytest-approvaltests",
+  "hypothesis",
+  "ruff",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args}"
+cov = "test --cov-report=xml --cov-config=pyproject.toml --cov=src/refact --cov=tests {args:tests}"
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.lint]
+dependencies = [
+  "mypy>=1.0.0",
+  "ruff",
+]
+[tool.hatch.envs.lint.scripts]
+check = "mypy --install-types --non-interactive {args:src/refact tests}"
+
+[tool.coverage.run]
+source_pkgs = ["refact", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/refact/__about__.py",
+]
+
+[tool.coverage.paths]
+refact = ["src/refact", "*/refact/src/refact"]
+tests = ["tests", "*/refact/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  # Don't complain if non-runnable code isn't run:
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
