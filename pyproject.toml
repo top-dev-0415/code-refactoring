@@ -43,7 +43,7 @@ dependencies = [
   "ruff",
 ]
 [tool.hatch.envs.default.scripts]
-test = "pytest --approvaltests-use-reporter='PythonNative' {args}"
+test = "pytest --approvaltests-use-reporter='PythonNative' {args:tests}"
 cov = "test --cov-report=xml --cov-config=pyproject.toml --cov=src/refact --cov=tests {args:tests}"
 
 [[tool.hatch.envs.all.matrix]]
