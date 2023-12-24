@@ -1,0 +1,52 @@
+# https://editorconfig.org
+
+# This is the top-level configuration
+root = true
+
+#########################################
+# Default settings
+#########################################
+
+[*]
+indent_style = space
+indent_size = 2
+#tab_width = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+curly_bracket_next_line = false
+spaces_around_operators = true
+max_line_length = 88
+
+# Files that use 4 spaces indentation
+[*.{cpp,cs,gradle,gql,java,kt,md,py,rs,rst}]
+indent_size = 4
+
+# Files that use TAB indentation
+[*.{go,tsv,bat,gql}]
+indent_style = tab
+
+#########################################
+# Specific filetypes
+#########################################
+
+[*.bat]
+end_of_line = crlf
+
+[*.cs]
+curly_bracket_next_line = true
+
+[*.{js,ts}]
+quote_type = single
+
+[*.md]
+trim_trailing_whitespace = false
+
+#########################################
+# Exact files
+#########################################
+
+[Makefile]
+indent_style = tab
+indent_size = 4
