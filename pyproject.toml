@@ -7,7 +7,7 @@ name = "refact"
 dynamic = ["version"]
 description = "Refactoring practice example, ported from example in first chapter of Martin Fowler's Refactoring book."
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 keywords = []
 authors = [
   { name = "Cameron Unterberger", email = "camercu@gatech.edu" },
