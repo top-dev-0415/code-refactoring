@@ -9,3 +9,6 @@ Python from the example in Chapter 1 of Martin Fowler's book
 
 Clone this project and follow along with the refactoring steps described in
 Chapter 1 of the *Refactoring* book.
+
+To see a walkthrough of the steps, switch to the `solution` branch and follow
+along with the commits there.
