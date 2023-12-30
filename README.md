@@ -12,3 +12,21 @@ Chapter 1 of the *Refactoring* book.
 
 To see a walkthrough of the steps, switch to the `solution` branch and follow
 along with the commits there.
+
+Before running tests, first install the dependencies:
+
+```sh
+pip install -r requirements.txt
+```
+
+Then use the [hatch](https://hatch.pypa.io/latest/) tool to run tests.
+
+```sh
+hatch run test
+```
+
+Alternatively, you can run a watch script to re-run tests any time you change the python source.
+
+```sh
+hatch run watch
+```
