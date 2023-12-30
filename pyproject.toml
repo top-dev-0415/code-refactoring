@@ -39,11 +39,13 @@ dependencies = [
   "pytest-cov",
   "pytest-mock",
   "pytest-approvaltests",
+  "pytest-watcher",
   "hypothesis",
   "ruff",
 ]
 [tool.hatch.envs.default.scripts]
 test = "pytest --approvaltests-use-reporter='PythonNative' {args:tests}"
+watch = "ptw . --approvaltests-use-reporter='PythonNative' {args:tests}"
 cov = "test --cov-report=xml --cov-config=pyproject.toml --cov=src/refact --cov=tests {args:tests}"
 
 [[tool.hatch.envs.all.matrix]]
@@ -76,3 +78,11 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
+[tool.pytest-watcher]
+now = true
+delay = 0.2
+runner = "pytest"
+runner_args = []
+patterns = ["src/**/*.py","tests/**/*.py", "pyproject.toml"]
+ignore_patterns = []
